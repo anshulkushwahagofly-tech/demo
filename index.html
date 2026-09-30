@@ -2,18 +2,30 @@
 <html lang="en">
 
 <head>
+
 <script>
   const originalFetch = window.fetch;
   window.fetch = async function() {
     let url = arguments[0];
-    if (typeof url === 'string' && url.includes('sanity.io')) {
-      arguments[0] = 'https://corsproxy.io/?' + encodeURIComponent(url);
+    let urlStr = typeof url === 'string' ? url : (url instanceof Request ? url.url : '');
+    
+    if (urlStr.includes('sanity.io')) {
+      const types = ['translations', 'siteSettings', 'hero', 'clinicServices', 'reviews', 'journey', 'footer', 'locations', 'dentalTourism'];
+      for (let t of types) {
+        if (urlStr.includes('%22' + t + '%22') || urlStr.includes('"' + t + '"')) {
+          return originalFetch('./data/' + t + '.json');
+        }
+      }
+      // Fallback
+      arguments[0] = 'https://corsproxy.io/?' + encodeURIComponent(urlStr);
     } else if (url instanceof Request && url.url.includes('sanity.io')) {
       arguments[0] = new Request('https://corsproxy.io/?' + encodeURIComponent(url.url), url);
     }
     return originalFetch.apply(this, arguments);
   };
 </script>
+
+
 <script>(function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push(i)})
 (window,'GTM-TVBB8XWZ','google_tags_first_party');</script><script>(function(w,d,s,l){w[l]=w[l]||[];(function(){w[l].push(arguments);})('set', 'developer_id.dY2E1Nz', true);
 		var f=d.getElementsByTagName(s)[0],
