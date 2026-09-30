@@ -15,6 +15,13 @@ const mimeTypes = {
 http.createServer((req, res) => {
   let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
   
+  // Quick fix for EISDIR
+  try {
+    if (fs.statSync(filePath).isDirectory()) {
+      filePath = path.join(filePath, 'index.html');
+    }
+  } catch (e) {}
+
   if (fs.existsSync(filePath)) {
     const ext = String(path.extname(filePath)).toLowerCase();
     const contentType = mimeTypes[ext] || 'application/octet-stream';
@@ -26,4 +33,4 @@ http.createServer((req, res) => {
     res.end('Not found');
   }
 }).listen(3000);
-console.log('Server running at http://localhost:3000/');
+console.log('Server running');
