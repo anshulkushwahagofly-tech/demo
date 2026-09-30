@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script>(function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push(i)})
+(window,'GTM-TVBB8XWZ','google_tags_first_party');</script><script>(function(w,d,s,l){w[l]=w[l]||[];(function(){w[l].push(arguments);})('set', 'developer_id.dY2E1Nz', true);
+		var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s);j.async=true;j.src='/dofl/';
+		f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer');</script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <!-- Open Sanity CDN socket early so the first image/video request skips DNS+TLS handshake -->
+    <link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#e8e7e5" id="meta-theme-color" />
+    <meta name="color-scheme" content="only light" id="meta-color-scheme" />
+    <meta name="supported-color-schemes" content="light only" id="meta-supported-cs" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="description" content="SkyClinics brings together selected licensed clinics in Tirana: how treatment is planned, what the journey looks like, and how to request a written plan.">
+    <title>SkyClinics | Dental Treatment in Tirana, Albania</title>
+
+    <!-- Google Consent Mode v2 — default all to denied until user consents -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500
+        });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            if (!i) return; w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TVBB8XWZ');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!--
+      Theme detection — runs BEFORE first paint.
+      Reads localStorage + URL to determine theme, sets CSS custom properties
+      on <html> so the loader, body, and meta tag all render the correct
+      colors from frame 1. No cream→dark flash on aesthetics reload.
+    -->
+    <script>
+        (function () {
+            var t = 'dental';
+            try { var s = localStorage.getItem('sky-clinic-theme'); if (s === 'aesthetics' || s === 'estetics') { t = 'aesthetics'; if (s === 'estetics') localStorage.setItem('sky-clinic-theme', 'aesthetics') } } catch (e) { }
+            try {
+                var p = location.pathname.split('/').filter(Boolean);
+                var lc = ['en', 'fr', 'de', 'el', 'it', 'es', 'sq'];
+                if (p.length && lc.indexOf(p[0]) > -1) p = p.slice(1);
+                if (p.length && (p[0] === 'aesthetics' || p[0] === 'estetics')) t = 'aesthetics';
+            } catch (e) { }
+            var d = t === 'aesthetics';
+            var bg = d ? 'rgb(0,57,52)' : 'rgb(232,231,229)';
+            var fg = d ? 'rgb(232,231,229)' : 'rgb(0,57,52)';
+            var ac = d ? 'rgb(26,158,143)' : 'rgb(26,158,143)';
+            var r = document.documentElement;
+            r.style.setProperty('--nl-bg', bg);
+            r.style.setProperty('--nl-fg', fg);
+            r.style.setProperty('--nl-ac', ac);
+            r.className = d ? 'theme-aesthetics' : 'theme-dental';
+            var m = document.getElementById('meta-theme-color');
+            if (m) m.setAttribute('content', d ? '#003934' : '#e8e7e5');
+            var cs = document.getElementById('meta-color-scheme');
+            if (cs) cs.setAttribute('content', d ? 'only dark' : 'only light');
+            var scs = document.getElementById('meta-supported-cs');
+            if (scs) scs.setAttribute('content', d ? 'dark only' : 'light only');
+            r.style.colorScheme = d ? 'only dark' : 'only light';
+            window.__initialTheme = t;
+        })();
+    </script>
+
+    <!-- Preload critical font — starts downloading before JS parses -->
+    <link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+        /*
+         * Loading screen — Expanding Dot Radar
+         * 5×5 dot grid with concentric ring activation.
+         * ONLY transform + opacity animate → compositor-thread, zero paint.
+         *
+         * Ring 0 (center):  1 dot  — delay 0s
+         * Ring 1 (inner):   8 dots — delay 0.3s
+         * Ring 2 (outer):  16 dots — delay 0.6s
+         *
+         * The pattern expands outward like a radar scan, then resets.
+         * Colors are set by the theme-detection script via CSS custom properties.
+         */
+
+        @keyframes nl-radar {
+            0% {
+                opacity: 0.1;
+                transform: scale(0.55);
+            }
+
+            30% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+
+            55% {
+                opacity: 0.55;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0.1;
+                transform: scale(0.55);
+            }
+        }
+
+        @keyframes nl-fade {
+            from {
+                opacity: 0;
+                transform: translateY(6px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        #native-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--nl-bg, #e8e7e5);
+            will-change: opacity;
+        }
+
+        #native-loader .nl-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 5×5 dot grid */
+        #native-loader .nl-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            width: 110px;
+            height: 110px;
+            gap: 0;
+        }
+
+        /* Individual dot cell */
+        #native-loader .nl-dot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* The visible dot — real element so GSAP can animate it on exit */
+        #native-loader .nl-dot i {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--nl-fg, #003934);
+            opacity: 0.1;
+            transform: scale(0.55);
+            will-change: transform, opacity;
+            animation: nl-radar 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            font-style: normal;
+            /* reset italic */
+        }
+
+        /* Ring delays — Chebyshev distance from center (2,2) */
+        #native-loader .nl-dot[data-r="0"] i {
+            animation-delay: 0s;
+        }
+
+        #native-loader .nl-dot[data-r="1"] i {
+            animation-delay: 0.3s;
+        }
+
+        #native-loader .nl-dot[data-r="2"] i {
+            animation-delay: 0.6s;
+        }
+
+        /* Text container */
+        #native-loader .nl-text {
+            display: flex;
+            gap: .3em;
+            margin-top: 28px;
+            white-space: nowrap;
+            font-family: 'Satoshi', system-ui, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .08em;
+            color: var(--nl-fg, #003934);
+        }
+
+        /* Letters fade in with staggered CSS delays — one-shot, compositor-only */
+        #native-loader .nl-char {
+            opacity: 0;
+            display: inline-block;
+            animation: nl-fade .5s ease-out forwards;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/index-BsFwCvkF.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/router-cK2vmdry.js">
+  <link rel="modulepreload" crossorigin href="/assets/three-CM_K8Udi.js">
+  <link rel="modulepreload" crossorigin href="/assets/r3f-DrMoYZxY.js">
+  <link rel="modulepreload" crossorigin href="/assets/gsap-CH_iu5NA.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-CE5f5pXt.css">
+  <link rel="canonical" href="https://skyclinics.al/">
+</head>
+
+<body style="background:var(--nl-bg, #e8e7e5);margin:0">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVBB8XWZ" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!--
+        Loading screen — Expanding Dot Radar.
+        Single source of truth — React does NOT duplicate this.
+        React's LoadingOverlay.jsx only runs the GSAP exit animation.
+
+        5×5 dot grid: rings pulse outward from center like a radar scan.
+        data-r = Chebyshev distance from center cell (2,2).
+        All animation is transform + opacity → compositor-thread only.
+    -->
+    <div id="native-loader">
+        <div class="nl-wrap">
+            <div class="nl-grid">
+                <!-- Row 0 -->
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <!-- Row 1 -->
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="1"><i></i></span>
+                <span class="nl-dot" data-r="1"><i></i></span>
+                <span class="nl-dot" data-r="1"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <!-- Row 2 -->
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="1"><i></i></span>
+                <span class="nl-dot" data-r="0"><i></i></span>
+                <span class="nl-dot" data-r="1"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <!-- Row 3 -->
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="1"><i></i></span>
+                <span class="nl-dot" data-r="1"><i></i></span>
+                <span class="nl-dot" data-r="1"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <!-- Row 4 -->
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+                <span class="nl-dot" data-r="2"><i></i></span>
+            </div>
+            <div class="nl-text" aria-label="SKYCLINICS">
+                <span class="nl-char" style="animation-delay:.2s">S</span>
+                <span class="nl-char" style="animation-delay:.24s">K</span>
+                <span class="nl-char" style="animation-delay:.28s">Y</span>
+                <span class="nl-char" style="animation-delay:.32s">C</span>
+                <span class="nl-char" style="animation-delay:.36s">L</span>
+                <span class="nl-char" style="animation-delay:.40s">I</span>
+                <span class="nl-char" style="animation-delay:.44s">N</span>
+                <span class="nl-char" style="animation-delay:.48s">I</span>
+                <span class="nl-char" style="animation-delay:.52s">C</span>
+                <span class="nl-char" style="animation-delay:.56s">S</span>
+            </div>
+        </div>
+    </div>
+    <!-- SEO: Noscript fallback for search engines that don't execute JS -->
+    <noscript>
+        <div style="max-width:800px;margin:2rem auto;padding:1rem;font-family:system-ui,sans-serif">
+            <h1>SkyClinics — Premium Dental Tourism in Albania</h1>
+            <p>Where smiles take flight. SkyClinics offers world-class dental care in Tirana, Albania, combining advanced technology with an exceptional patient journey.</p>
+            <p>Address: Rruga Panorama, Tiranë, Albania</p>
+            <p>Phone: <a href="tel:+355693918694">+355 69 391 8694</a> | Email: <a href="mailto:info@skyclinics.al">info@skyclinics.al</a></p>
+            <p>Open: Mon–Fri 9 AM – 6 PM, Sat 9 AM – 2 PM</p>
+            <nav>
+                <a href="/">Home</a> |
+                <a href="/clinical-systems">Clinical Systems</a> |
+                <a href="/the-experience">The Experience</a> |
+                <a href="/partners">Partners</a>
+            </nav>
+        </div>
+    </noscript>
+
+    <div id="root"></div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a432191268350c2e',t:'MTc5MDc1OTQ2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"2008ba6f4b964e1fa160725e3c883aa3","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+
+</html>

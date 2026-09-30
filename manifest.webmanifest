@@ -1,0 +1,16 @@
+{
+  "name": "SkyClinics",
+  "short_name": "SkyClinics",
+  "description": "Premium dental tourism in Albania. Where smiles take flight.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8e7e5",
+  "theme_color": "#e8e7e5",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}
